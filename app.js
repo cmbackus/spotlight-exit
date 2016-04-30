@@ -1,8 +1,8 @@
 var svg = d3.select("svg")
     , m = 20
-    , left = 150
+    , left = 0
     , padding = 2
-    , charge = 25;
+    , charge = 5;
 
 var questions = [
     {
@@ -13,25 +13,25 @@ var questions = [
         , no: 2
     }, {
         title: "Rock"
-        , no: 4
+        , no: 3
     }, {
         title: "Folk"
-        , no: 3
+        , no: 4
     }
 
 ];
 
 questions.forEach(function (d, i) {
     d.fixed = true;
-    d.radius = 25;
+    d.radius = 35;
     d.class = "question";
     d.x = 200 + i * 250
         , d.y = 250;
 });
 
 answers.forEach(function (d) {
-    d.radius = 8;
-    d.class = "candidate " + d.party;
+    d.radius = Math.random() * 4 + 3;
+    d.class = "candidate "
     d.title = d.user_name;
 });
 
@@ -79,7 +79,7 @@ questions.append("text")
         return d.title;
     })
     .attr({
-        class: "white label"
+        class: "label"
         , dy: 5
     });
 
@@ -101,8 +101,8 @@ function tick(e) {
                 var dx = d.x - q.x
                     , dy = d.y - q.y
                     , dn = 1 / Math.sqrt(dx * dx + dy * dy);
-                d.px += charge * dx * Math.pow(dn, 2) * d.genres[q.no] || 0;
-                d.py += charge * dy * Math.pow(dn, 2) * d.genres[q.no] || 0;
+                d.px += charge * dx * Math.pow(dn, 2) * d.genres[q.no] * d.radius || 0;
+                d.py += charge * dy * Math.pow(dn, 2) * d.genres[q.no] * d.radius || 0;
             });
         })
         .each(collide(0.5))
