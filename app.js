@@ -7,16 +7,16 @@ var svg = d3.select("svg")
 var questions = [
     {
         title: "Pop"
-        , no: 1
+        , no: 0
     }, {
         title: "Country"
-        , no: 2
+        , no: 1
     }, {
         title: "Rock"
-        , no: 3
+        , no: 2
     }, {
         title: "Folk"
-        , no: 4
+        , no: 3
     }
 
 ];
@@ -98,16 +98,21 @@ function tick(e) {
         .each(function (d) {
             questions.each(function (q) {
                 if (q.x < 50) return;
+
                 var dx = d.x - q.x
                     , dy = d.y - q.y
                     , dn = 1 / Math.sqrt(dx * dx + dy * dy);
+                APPROX_RAD = 60;
+                if (d.x < q.x + APPROX_RAD && d.x > q.x - APPROX_RAD && d.y < q.y + APPROX_RAD && d.y > q.y - APPROX_RAD) return;
+
                 d.px += charge * dx * Math.pow(dn, 2) * d.genres[q.no] * d.radius || 0;
                 d.py += charge * dy * Math.pow(dn, 2) * d.genres[q.no] * d.radius || 0;
+
             });
         })
         .each(collide(0.5))
         .each(function (node) {
-            node.x = Math.max(150 + node.radius / 2, Math.min(container.offsetWidth - m, node.x));
+            node.x = Math.max(node.radius / 2, Math.min(container.offsetWidth - m, node.x));
             node.y = Math.max(m, Math.min(container.offsetHeight - m, node.y));
         });
 

@@ -2,10 +2,69 @@
 <meta charset='utf8'>
 <title>Spotlight</title>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
 <script src="data.js"></script>
-<link rel="stylesheet" href="style.css">
-<div id="container">
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+
+<div id="container" class="visualization">
     <svg></svg>
 </div>
+<div class="individualView" id="left">
+    <div class="albumHold col-md-3" id="album-left">
+        <img id="leftAlbum" class="album" src="media/takeawayPoster_final.png" />
 
+    </div>
+    <div class="albumNav col-md-2" id="nav-left">
+        <div class="option o1 folk" id=option1l></div>
+        <div class="option o2 folk" id=option2l></div>
+        <div class="option o 3 folk" id=option3l></div>
+    </div>
+    <div class="tabContainer col-md-7" id=leftTabContainer>
+        <div class="tab" id=tab1l>
+            <h2>video</h2></div>
+        <div class="tab" id=tab2l>
+            <img class="zoomDoc" src="media/rock_document.jpg" /> <img class="fullDoc" src="media/rock_document.jpg" />
+            <p>Check out the lyrics to Bruce Springsteen's hit single "Born to Run"</p>
+        </div>
+        <div class="tab" id=tab3l>
+            <h2>gallery</h2>
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <img src="slide1.jpg" />
+                    </li>
+                    <li>
+                        <img src="slide2.jpg" />
+                    </li>
+                    <li>
+                        <img src="slide3.jpg" />
+                    </li>
+                    <li>
+                        <img src="slide4.jpg" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="individualView" id="right">
+    <div class="albumHold col-md-3" id="album-left">
+        <img id="leftAlbum" class="album" src="media/takeawayPoster_final.png" /></div>
+    <div class="albumNav col-md-2" id="nav-left">
+        <div class="option o1" id=option1r></div>
+        <div class="option o2" id=option2r></div>
+        <div class="option o 3" id=option3r></div>
+    </div>
+    <div class="tabContainer col-md-7" id=leftTabContainer>
+        <div class=tab id=tab1r>
+            <h2>video</h2></div>
+        <div class=tab id=tab2r>
+            <h2>document</h2></div>
+        <div class=tab id=tab3r>
+            <h2>gallery</h2></div>
+    </div>
+</div>
 <script src="app.js"></script>
+<script src="individual.js"></script>
