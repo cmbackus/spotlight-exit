@@ -109,6 +109,8 @@
         display: block;
     }
     
+    .selected {}
+    
     .zoomDoc {
         height: 80%;
     }
@@ -120,4 +122,13 @@
     
     .o2 {
         margin-left: 30%;
+    }
+    
+    .gallerySlide {
+        height: 80%;
+        width: 40%;
+    }
+    
+    .gallerySlide li {
+        height: 100%;
     }
