@@ -18,7 +18,11 @@
         cursor: pointer;
     }
     
-    .question circle {
+    .expandUser circle {
+        color: aqua;
+    }
+    
+    .genre circle {
         fill: black;
         stroke: cyan;
         stroke-width: 5px;
@@ -26,16 +30,13 @@
     
     .label {
         text-anchor: middle;
-        stroke: white;
-        font-family: verdana;
+        font-family: 'Roboto Condensed', sans-serif;
+        fill: #999;
         font-size: 14px;
         cursor: pointer;
     }
     
-    .white {
-        stroke: white;
-        stroke-width: 5px;
-    }
+    .white {}
     
     .folk {
         background: rgba(85, 8, 225, 1);
@@ -51,7 +52,7 @@
         position: absolute;
         bottom: 0;
         width: 50%;
-        height: 35%;
+        height: 40%;
     }
     
     #left {
@@ -89,9 +90,8 @@
     .album {
         width: 90%;
         margin: auto;
-        margin-top: 10%;
         position: absolute;
-        top: 0;
+        top: 60px;
         left: 5%;
     }
     
@@ -100,9 +100,13 @@
         border-radius: 50%;
         z-index: -1;
         position: absolute;
-        top: 0;
+        top: 60px;
         left: 10%;
         background-color: #fff;
+    }
+    
+    .albumNav {
+        margin-top: 45px;
     }
     
     .active {
@@ -112,12 +116,13 @@
     .selected {}
     
     .zoomDoc {
-        height: 80%;
+        height: 60%;
+        margin-left: 10%;
     }
     
     .fullDoc {
         margin-top: 15%;
-        height: 50%;
+        height: 40%;
     }
     
     .o2 {
@@ -125,10 +130,35 @@
     }
     
     .gallerySlide {
-        height: 80%;
-        width: 40%;
+        height: 60%;
+        width: 60%;
+        margin: auto;
+        overflow: hidden;
     }
     
-    .gallerySlide li {
-        height: 100%;
+    .gallerySlide li {}
+    
+    .user {
+        fill: aqua
+    }
+    
+    .tab iframe {
+        margin: auto;
+    }
+    
+    .tab h2 {
+        color: #999;
+        font-family: 'Roboto Condensed', sans-serif;
+        text-align: center;
+        font-size: 14pt;
+    }
+    
+    .tab p {
+        text-align: center;
+        color: #999;
+        font-family: 'Roboto Condensed', sans-serif;
+        text-align: center;
+        font-size: 10pt;
+        max-width: 80%;
+        margin: auto;
     }
