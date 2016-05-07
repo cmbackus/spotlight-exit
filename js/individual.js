@@ -65,6 +65,8 @@ function loadIndividualContent(side, index, name) {
     $('#' + side + '_tab3_img3').attr('src', genre.gallery.photos[3]);
 
     //custom poster
-    drawAlbum('#' + side + 'Album', index, name, '#00ff00', '#ff0000')
+    genre = genres[index].genre.toUpperCase();
+    var bgImg = "media/" + genre + "_header.png";
+    // drawAlbum('#' + side + 'Album', index, name, '#00ff00', '#ff0000')
 
 }

@@ -14,16 +14,28 @@ questions.forEach(function (d, i) {
     d.x = 200 + i * 200
         , d.y = 250;
 });
-
+//answers = $.get("http://jason-loves-boston.herokuapp.com/exit").users;
 answers.forEach(function (d) {
     d.radius = Math.random() * 4 + 3;
     d.isExpanded = false;
-    d.class = "user"
-    d.title = d.user_name;
+    d.class = "user";
+    d.title = d.firstName;
 });
 //set up gradients/////////////////////////////////////////////////////////////
 var gradient
-
+    /*"Pop",
+     "Punk",
+     "Rock",
+     "Country",
+     "Indie",
+     "New Wave",
+     "Soul",
+     "EDM",
+     "Jazz",
+     "Rap",
+     "Metal",
+     "Folk",
+     "Disco",*/
 function setGradient(color1, color2) {
     gradient = svg.append("svg:defs")
         .append("svg:linearGradient")
@@ -80,26 +92,20 @@ circles.append("circle")
         console.log(d.radius);
         console.log(d3.select(this).attr("r"));
         if (d.isExpanded == true && d.class == "user") {
-            console.log("is expanded")
+            console.log(this)
             d3.select(this).attr("r", d.radius);
+            //d3.select('user').datum("r", d.radius);
+
             d3.select(this).style("fill", '#999');
             d.isExpanded = false
 
         } else if (d.class == "user") {
             console.log("will expand now")
-            setGradient("#fff", "#000")
+            setGradient(d.aura[0], d.aura[1])
             d3.select(this).style("fill", 'url(#gradient)');
-            /* var poster = d3.select(this).append("canvas")
-                 .attr("width", 20)
-                 .attr("height", 20);
-             var context = poster.node().getContext("2d");
-             context.beginPath();
-             context.rect(150, 150, 10, 10);
-             context.fillStyle = "red";
-             context.fill();
-             context.closePath();*/
 
-            d3.select(this).attr("r", 30);
+
+            d3.select(this).attr("r", 20);
             d3.select(this).append("text")
 
             .attr({

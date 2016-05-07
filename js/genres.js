@@ -191,29 +191,44 @@ var genres = [
         }
 }
 ];
+/*"Pop",
+ "Punk",
+ "Rock",
+ "Country",
+ "Indie",
+ "New Wave",
+ "Soul",
+ "EDM",
+ "Jazz",
+ "Rap",
+ "Metal",
+ "Folk",
+ "Disco",*/
 var questions = [
     {
-        genre: "country"
-        , title: "Country Slinger"
-        , no: 0
-    }, {
-        genre: "metal"
-        , title: "Headbanger"
-        , no: 1
-    }, {
-        genre: "EDM"
-        , title: "Mix Master"
-        , no: 2
-    }, {
         genre: "pop"
         , title: "Pop Princess"
-        , no: 3
+        , no: 0
 
     }, {
-        genre: "soul"
-        , title: "Soulful Songstress"
-        , no: 4
+        genre: "punk"
+        , title: "Punk"
+        , no: 1
 
+    }, {
+        genre: "rock"
+        , title: "Rock Legend"
+        , no: 2
+
+    }
+    , {
+        genre: "country"
+        , title: "Country Slinger"
+        , no: 3
+    }, {
+        genre: "indie"
+        , title: "True Hipster"
+        , no: 4
     }
 
 ];
