@@ -19,7 +19,7 @@
     }
     
     .expandUser circle {
-        color: aqua;
+        fill: aqua;
     }
     
     .genre circle {
@@ -33,6 +33,7 @@
         font-family: 'Roboto Condensed', sans-serif;
         fill: #999;
         font-size: 14px;
+        max-width: 20px;
         cursor: pointer;
     }
     
@@ -83,7 +84,7 @@
         width: 25px;
         height: 25px;
         border-radius: 50%;
-        background-color: orange;
+        background-color: #999;
         margin-top: 30%;
     }
     
@@ -113,7 +114,15 @@
         display: block;
     }
     
-    .selected {}
+    .selected {
+        background: rgba(85, 8, 225, 1);
+        background: -moz-linear-gradient(left, rgba(85, 8, 225, 1) 0%, rgba(1, 214, 141, 1) 100%);
+        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(85, 8, 225, 1)), color-stop(100%, rgba(1, 214, 141, 1)));
+        background: -webkit-linear-gradient(left, rgba(85, 8, 225, 1) 0%, rgba(1, 214, 141, 1) 100%);
+        background: -o-linear-gradient(left, rgba(85, 8, 225, 1) 0%, rgba(1, 214, 141, 1) 100%);
+        background: -ms-linear-gradient(left, rgba(85, 8, 225, 1) 0%, rgba(1, 214, 141, 1) 100%);
+        background: linear-gradient(to right, rgba(85, 8, 225, 1) 0%, rgba(1, 214, 141, 1) 100%);
+    }
     
     .zoomDoc {
         height: 60%;

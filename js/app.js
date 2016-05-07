@@ -17,6 +17,7 @@ questions.forEach(function (d, i) {
 
 answers.forEach(function (d) {
     d.radius = Math.random() * 4 + 3;
+    d.isExpanded = false;
     d.class = "user"
     d.title = d.user_name;
 });
@@ -71,14 +72,33 @@ circles.append("circle")
     })
     .on("click", function (d) {
         console.log(d);
-        d3.select(this).style("fill", 'url(#gradient)');
-        d3.select(this).attr("r", 30);
-        d3.select(this).append("img")
-            .attr("xlink:href", "@Url.Content('media/takeawayPoster_final.png')")
+        //d3.select(this).style("fill", 'url(#gradient)');
+        console.log(d.radius);
+        console.log(d3.select(this).attr("r"));
+        if (d.isExpanded == true) {
+            console.log("is expanded")
+            d3.select(this).attr("r", d.radius);
+            d3.select(this).style("fill", '#999');
+            d.isExpanded = false
+
+        } else {
+            console.log("will expand now")
+            d3.select(this).style("fill", 'url(#gradient)');
+            d3.select(this).attr("r", 30);
+            d.isExpanded = true;
+        }
+
+        // d3.select(this).attr("class", "expandUser")
+        /*d3.select(this).append("img")
+        .attr("xlink:href", "@Url.Content('media/takeawayPoster_final.png')")
             .attr("x", "60")
             .attr("y", "60")
             .attr("width", "20")
             .attr("height", "20");
+            */
+        // hasClass = d.classed("selected");
+        //d.classed("selected", not hasClass);
+        console.log(d);
 
     })
     .call(function (g) {
@@ -101,14 +121,7 @@ questions.append("text")
         , dy: 5
     });
 
-questions.append("text")
-    .text(function (d) {
-        return d.title;
-    })
-    .attr({
-        "class": "label"
-        , dy: 5
-    });
+
 
 function tick(e) {
     force.resume();
@@ -130,6 +143,7 @@ function tick(e) {
         })
         .each(collide(0.5))
         .each(function (node) {
+
             node.x = Math.max(node.radius / 2, Math.min(container.offsetWidth - m, node.x));
             node.y = Math.max(m, Math.min(container.offsetHeight - m, node.y));
         });
@@ -143,7 +157,10 @@ function tick(e) {
 function collide(alpha) {
     var quadtree = d3.geom.quadtree(force.nodes());
     return function (d) {
-        var r = d.radius + padding
+        var curRad
+        if(d.isExpanded==true){curRad=30}
+        else{curRad=d.radius}
+        var r = curRad + padding
             , nx1 = d.x - r
             , nx2 = d.x + r
             , ny1 = d.y - r
@@ -154,7 +171,7 @@ function collide(alpha) {
                 var x = d.x - quad.point.x
                     , y = d.y - quad.point.y
                     , l = Math.sqrt(x * x + y * y)
-                    , r = (d.radius + quad.point.radius + padding);
+                    , r = (curRad + quad.point.radius + padding);
                 if (l < r) {
                     l = (l - r) / l * 0.5;
                     d.x -= x *= l;

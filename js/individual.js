@@ -4,28 +4,33 @@ window.onload = function () {
             animation: "slide"
         });
     });
-    $('#l_option1').click(function () {
+    $('.option').click(function () {
+        $(this).siblings(".option").removeClass("selected");
         $(this).addClass("selected");
+
+    });
+    $('#l_option1').click(function () {
         switchMenu('#l_tab1');
     });
     $('#l_option2').click(function () {
-        $(this).addClass("selected");
+
         switchMenu('#l_tab2');
     });
     $('#l_option3').click(function () {
-        $(this).addClass("selected");
+
         switchMenu('#l_tab3');
     });
     $('#r_option1').click(function () {
-        $(this).addClass("selected");
+
         switchMenu('#r_tab1');
     });
     $('#r_option2').click(function () {
+        $(this).siblings(".option").removeClass("selected");
         $(this).addClass("selected");
         switchMenu('#r_tab2');
     });
     $('#r_option3').click(function () {
-        $(this).addClass("selected");
+
         switchMenu('#r_tab3');
     });
 

@@ -29,7 +29,7 @@ var genres = [
         }
         , video: {
             title: "Led Zeppelin, or The Nobs?"
-            , link: "https://www.youtube.com/watch?v=bheNgUIvBNc"
+            , link: "https://www.youtube.com/embed/bheNgUIvBNc"
             , desc: "Led Zeppelin performed in Denmark under the name 'The Nobs' because Eva von Zeppelin, granddaughter of the inventor of Zeppelin airships, threatened to sue them otherwise for tarnishing the family name."
         }
         , gallery: {
