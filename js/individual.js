@@ -40,10 +40,10 @@ window.onload = function () {
 
     }
 }
-loadIndividualContent("l", 5)
-loadIndividualContent("r", 7)
+loadIndividualContent("l", 5, "Jay")
+loadIndividualContent("r", 7, "John")
 
-function loadIndividualContent(side, index) {
+function loadIndividualContent(side, index, name) {
     var genre = genres[index];
 
     //tab 1- video
@@ -65,6 +65,6 @@ function loadIndividualContent(side, index) {
     $('#' + side + '_tab3_img3').attr('src', genre.gallery.photos[3]);
 
     //custom poster
-    drawAlbum('#leftAlbum', index, '#00ff00', '#ff0000')
+    drawAlbum('#' + side + 'Album', index, name, '#00ff00', '#ff0000')
 
 }
