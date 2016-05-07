@@ -54,7 +54,7 @@ function loadIndividualContent(side, index, name) {
     //tab2-doc
     $('#' + side + '_tab2_title').text(genre.doc.title);
     $('#' + side + '_tab2_desc').text(genre.doc.desc);
-    //$('#' + side + '_tab2_img').src(genre.video.link);
+    $('#' + side + '_tab2_img').attr('src', genre.doc.img);
 
     //tab3-gallery
     $('#' + side + '_tab3_title').text(genre.gallery.title);
@@ -62,7 +62,7 @@ function loadIndividualContent(side, index, name) {
     //$('#' + side + '_tab2_img').src(genre.video.link);
     $('#' + side + '_tab3_img1').attr('src', genre.gallery.photos[0]);
     $('#' + side + '_tab3_img2').attr('src', genre.gallery.photos[1]);
-    $('#' + side + '_tab3_img3').attr('src', genre.gallery.photos[3]);
+    $('#' + side + '_tab3_img3').attr('src', genre.gallery.photos[2]);
 
     //custom poster
     genre = genres[index].genre.toUpperCase();
