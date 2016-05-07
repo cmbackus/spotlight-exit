@@ -21,8 +21,8 @@
 <div class="individualView" id="left">
 
     <div class=" col-md-3" id="album-left">
-        <img id="leftAlbum" class="album" src="media/takeawayPoster_final.png" />
-
+        <!-- <img id="leftAlbum" class="album" src="media/takeawayPoster_final.png" />-->
+        <canvas id=leftAlbum class=album width=200px height=200px></canvas>
     </div>
     <div class="albumNav col-md-2" id="nav-left">
         <div class="option o1" id=l_option1></div>
@@ -64,7 +64,7 @@
 <div class="individualView" id="right">
 
     <div class=" col-md-3" id="album-right">
-        <img id="leftAlbum" class="album" src="media/takeawayPoster_final.png" />
+        <img id="rightAlbum" class="album" src="media/takeawayPoster_final.png" />
 
     </div>
     <div class="albumNav col-md-2" id="nav-right">
@@ -104,6 +104,7 @@
         </div>
     </div>
 </div>
+<canvas id=tweetImage width=500px height=500px></canvas>
 <script defer src="js/jquery.flexslider.js"></script>
 <script type="text/javascript">
     $(window).load(function () {
@@ -116,4 +117,5 @@
     });
 </script>
 <script src="js/app.js"></script>
+<script src="js/poster.js"></script>
 <script src="js/individual.js"></script>

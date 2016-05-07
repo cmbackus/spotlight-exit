@@ -98,7 +98,14 @@ circles.append("circle")
              context.fillStyle = "red";
              context.fill();
              context.closePath();*/
+
             d3.select(this).attr("r", 30);
+            d3.select(this).append("text")
+
+            .attr({
+                class: "label"
+                , dy: 5
+            });
             d.isExpanded = true;
         }
 
@@ -175,7 +182,7 @@ function collide(alpha) {
     return function (d) {
         var curRad
         if (d.isExpanded == true) {
-            curRad = 30
+            curRad = 20
         } else {
             curRad = d.radius
         }

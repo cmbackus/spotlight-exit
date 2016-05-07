@@ -176,3 +176,7 @@
         max-width: 90%;
         margin: auto;
     }
+    
+    #tweetImage {
+        z-index: -5;
+    }

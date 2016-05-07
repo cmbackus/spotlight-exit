@@ -45,6 +45,7 @@ loadIndividualContent("r", 7)
 
 function loadIndividualContent(side, index) {
     var genre = genres[index];
+
     //tab 1- video
     $('#' + side + '_tab1_title').text(genre.video.title);
     $('#' + side + '_tab1_desc').text(genre.video.desc);
@@ -63,6 +64,7 @@ function loadIndividualContent(side, index) {
     $('#' + side + '_tab3_img2').attr('src', genre.gallery.photos[1]);
     $('#' + side + '_tab3_img3').attr('src', genre.gallery.photos[3]);
 
-
+    //custom poster
+    drawAlbum('#leftAlbum', index, '#00ff00', '#ff0000')
 
 }
