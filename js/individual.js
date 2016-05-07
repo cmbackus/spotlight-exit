@@ -40,8 +40,8 @@ window.onload = function () {
 
     }
 }
-loadIndividualContent("l", 1)
-loadIndividualContent("r", 0)
+loadIndividualContent("l", 5)
+loadIndividualContent("r", 7)
 
 function loadIndividualContent(side, index) {
     var genre = genres[index];

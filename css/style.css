@@ -1,8 +1,15 @@
     html,
     body,
-    .visualization,
-    svg {
+    {
         height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    svg,
+    .vizualization {
+        height: 60%;
         width: 100%;
         margin: 0;
         padding: 0;
@@ -18,10 +25,6 @@
         cursor: pointer;
     }
     
-    .expandUser circle {
-        fill: aqua;
-    }
-    
     .genre circle {
         fill: black;
         stroke: cyan;
@@ -35,6 +38,7 @@
         font-size: 14px;
         max-width: 20px;
         cursor: pointer;
+        white-space: wrap;
     }
     
     .white {}

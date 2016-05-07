@@ -9,9 +9,9 @@ var svg = d3.select("svg")
 
 questions.forEach(function (d, i) {
     d.fixed = true;
-    d.radius = 35;
+    d.radius = 50;
     d.class = "genre";
-    d.x = 200 + i * 250
+    d.x = 200 + i * 200
         , d.y = 250;
 });
 
@@ -22,25 +22,29 @@ answers.forEach(function (d) {
     d.title = d.user_name;
 });
 //set up gradients/////////////////////////////////////////////////////////////
-var gradient = svg.append("svg:defs")
-    .append("svg:linearGradient")
-    .attr("id", "gradient")
-    .attr("x1", "0%")
-    .attr("y1", "0%")
-    .attr("x2", "100%")
-    .attr("y2", "100%")
-    .attr("spreadMethod", "pad");
+var gradient
 
-// Define the gradient colors
-gradient.append("svg:stop")
-    .attr("offset", "0%")
-    .attr("stop-color", "#a00000")
-    .attr("stop-opacity", 1);
+function setGradient(color1, color2) {
+    gradient = svg.append("svg:defs")
+        .append("svg:linearGradient")
+        .attr("id", "gradient")
+        .attr("x1", "0%")
+        .attr("y1", "0%")
+        .attr("x2", "100%")
+        .attr("y2", "100%")
+        .attr("spreadMethod", "pad");
 
-gradient.append("svg:stop")
-    .attr("offset", "100%")
-    .attr("stop-color", "#aaaa00")
-    .attr("stop-opacity", 1);
+    // Define the gradient colors
+    gradient.append("svg:stop")
+        .attr("offset", "0%")
+        .attr("stop-color", color1)
+        .attr("stop-opacity", 1);
+
+    gradient.append("svg:stop")
+        .attr("offset", "100%")
+        .attr("stop-color", color2)
+        .attr("stop-opacity", 1);
+}
 //////////////////////////////////////////////end gradient
 var force = d3.layout.force()
     .nodes(answers.concat(questions))
@@ -75,15 +79,25 @@ circles.append("circle")
         //d3.select(this).style("fill", 'url(#gradient)');
         console.log(d.radius);
         console.log(d3.select(this).attr("r"));
-        if (d.isExpanded == true) {
+        if (d.isExpanded == true && d.class == "user") {
             console.log("is expanded")
             d3.select(this).attr("r", d.radius);
             d3.select(this).style("fill", '#999');
             d.isExpanded = false
 
-        } else {
+        } else if (d.class == "user") {
             console.log("will expand now")
+            setGradient("#fff", "#000")
             d3.select(this).style("fill", 'url(#gradient)');
+            /* var poster = d3.select(this).append("canvas")
+                 .attr("width", 20)
+                 .attr("height", 20);
+             var context = poster.node().getContext("2d");
+             context.beginPath();
+             context.rect(150, 150, 10, 10);
+             context.fillStyle = "red";
+             context.fill();
+             context.closePath();*/
             d3.select(this).attr("r", 30);
             d.isExpanded = true;
         }
@@ -136,12 +150,14 @@ function tick(e) {
                 APPROX_RAD = 60;
                 if (d.x < q.x + APPROX_RAD && d.x > q.x - APPROX_RAD && d.y < q.y + APPROX_RAD && d.y > q.y - APPROX_RAD) return;
 
-                d.px += charge * dx * Math.pow(dn, 2) * d.genres[q.no] * d.radius || 0;
-                d.py += charge * dy * Math.pow(dn, 2) * d.genres[q.no] * d.radius || 0;
+                d.px += charge * dx * Math.pow(dn, 2) * d.genres[q.no] * 5 || 0;
+                d.py += charge * dy * Math.pow(dn, 2) * d.genres[q.no] * 5 || 0;
 
             });
         })
-        .each(collide(0.5))
+        .each(
+            collide(0.5)
+        )
         .each(function (node) {
 
             node.x = Math.max(node.radius / 2, Math.min(container.offsetWidth - m, node.x));
@@ -158,8 +174,11 @@ function collide(alpha) {
     var quadtree = d3.geom.quadtree(force.nodes());
     return function (d) {
         var curRad
-        if(d.isExpanded==true){curRad=30}
-        else{curRad=d.radius}
+        if (d.isExpanded == true) {
+            curRad = 30
+        } else {
+            curRad = d.radius
+        }
         var r = curRad + padding
             , nx1 = d.x - r
             , nx2 = d.x + r
